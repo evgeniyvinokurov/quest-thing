@@ -1,4 +1,4 @@
-engine = function(){
+let engine = function(){
 
 	this.sums = [];
 	this.got_sum_cbs = [];

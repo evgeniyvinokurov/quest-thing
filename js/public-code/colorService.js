@@ -1,4 +1,4 @@
-colorService = {};
+let colorService = {};
 
 colorService.get_color = function() {
     /*var letters = '0123456789ABCDEF';

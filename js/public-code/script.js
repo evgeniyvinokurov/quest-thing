@@ -1,6 +1,4 @@
-jQuery(document).ready(function ($) {
-	$(document).ready(function(){
-
+jQuery(function ($) {
 		game.$output = $("#testoutput");
 		game.$game = $("#game");
 
@@ -73,6 +71,7 @@ jQuery(document).ready(function ($) {
 			notEmptyTree = true;
 		}
 
+		// МЕНЮ
 		var showMenu = function(self) {
 			$(self).append("<div class='menu'><div class='select' data-action='select'>select</div><div class='dblselect' data-action='dblselect'>double select</div><div class='unselect' data-action='unselect'>unselect</div></div>")
 		}
@@ -82,7 +81,7 @@ jQuery(document).ready(function ($) {
 			allmenus.remove();
 		}
 		
-
+		// КНОПКИ
 		$(document).on("click", '[name=new-entity]', function(e){
 			e.preventDefault();
 
@@ -95,17 +94,6 @@ jQuery(document).ready(function ($) {
 			game.render_objs(objs);
 		})
 
-		$(document).on("click", '[name=load-test]', function(e){
-			e.preventDefault();
-
-			gameEngine.load(testEngine.sums);
-			$("[name=mode]")[0].checked = false;
-			game.edit_mode = false;
-			game.edit_mode ? $(".edit_mode_on").show() : $(".edit_mode_on").hide();
-			$("input[name=start]").hide();
-
-			start();
-		})
 
 		$(document).on("click", '[name=add-group]', function(e){
 			e.preventDefault();
@@ -172,7 +160,7 @@ jQuery(document).ready(function ($) {
 
 
 
-		// РЕЖИМ РАБОТЫ ВЕБ ПРИЛОЖЕНИЯ
+		// РЕЖИМ РАБОТЫ 
 		$(document).on("change", '[name=mode]', function(e){
 			e.preventDefault();
 
@@ -194,6 +182,7 @@ jQuery(document).ready(function ($) {
 			start();
 		})
 
+		// ВЫБОР
 		$(document).on("click", '[name=unselect-all]', function(e){
 			e.preventDefault();
 			$.each($(".output .item.selected, .output .item.dblselected"), function(i, item){
@@ -247,16 +236,4 @@ jQuery(document).ready(function ($) {
 
 		 	removeMenu();
 		})
-
-		//$(document).on("dblclick", '.output .item', function(e){
-			//e.preventDefault();
-			//$(this).toggleClass("dblselected");	
-		//})
-	});	
-});
-
-
-// Одинарное выделение фиксирует текущую сумму
-// Каждый объект имеет сумму
-// Двойное выделение фиксирует объекты, которые появляются при текущей сумме. 
-// Выделить двойным кликом, нажать адд гроуп - записать действие
+});	
